@@ -25,7 +25,20 @@ Together, these three tools form a powerful and flexible platform for managing l
 1. Logs for logstash can be seen in docker with following command `docker logs <logstash container id>`.
 2. All the data that has been indexed on elasticsearch can be seen on kibana dev tools with following command `GET /_cat/indices`  
 3. If index is being default created by the elasticsearch it will be visible after the above command.
-4. Logs from the index <ds-logs-generic-default-2023.05.04-000001> can be seen with the help of following command `GET /.ds-logs-generic-default-2023.05.04-000001/_search?pretty`
+4. Logs from the index <ds-logs-generic-default-2023.05.04-000001> can be seen with the help of following command 
+
+`
+GET /.ds-logs-generic-default-2023.05.04-000001/_search?pretty
+{
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+`
 
 
 #### Sending logs from django application.
